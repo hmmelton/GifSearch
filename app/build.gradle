@@ -46,6 +46,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Architecture components
+    implementation 'android.arch.paging:runtime:1.0.1'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    // Retrofit networking library
+    implementation "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
+    implementation "com.squareup.retrofit2:converter-moshi:${libraries.retrofit}"
+
+    // Moshi JSON conversion
+    implementation "com.squareup.moshi:moshi:${libraries.moshi}"
+    implementation "com.squareup.moshi:moshi-kotlin:${libraries.moshi}"
 }
 
 task('ktlint', type: JavaExec, group: 'verification') {
