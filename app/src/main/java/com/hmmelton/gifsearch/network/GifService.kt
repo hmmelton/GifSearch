@@ -37,9 +37,16 @@ interface GifService {
     ): Call<GifResponse>
 }
 
+data class Pagination(
+    @Json(name = "total_count") val totalCount: Int,
+    val count: Int,
+    val offset: Int
+)
+
 /**
  * This class is necessary to parse the list of GIFs out of the network responses.
  */
 data class GifResponse(
-    @Json(name = "data") val gifs: List<Gif>
+    @Json(name = "data") val gifs: List<Gif>,
+    val pagination: Pagination
 )
