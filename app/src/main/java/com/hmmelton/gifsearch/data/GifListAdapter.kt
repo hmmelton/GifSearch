@@ -58,27 +58,6 @@ class GifListAdapter : PagedListAdapter<Gif, GifListAdapter.ViewHolder>(DIFF_CAL
                 .asGif()
                 .load(Uri.parse(gif.gifUrl))
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-//                .listener(object : RequestListener<GifDrawable?> {
-//                    override fun onLoadFailed(
-//                        e: GlideException?,
-//                        model: Any?,
-//                        target: Target<GifDrawable?>?,
-//                        isFirstResource: Boolean
-//                    ): Boolean {
-//                        Log.e("GifListAdapter", "Load failed: ${gif.gifImage.fixedWidthImage.mp4_size}", e)
-//                        return false
-//                    }
-//
-//                    override fun onResourceReady(
-//                        resource: GifDrawable?,
-//                        model: Any?,
-//                        target: Target<GifDrawable?>?,
-//                        dataSource: DataSource?,
-//                        isFirstResource: Boolean
-//                    ): Boolean {
-//                        return false
-//                    }
-//                })
                 .placeholder(circularProgressDrawable)
                 .into(imageView)
         }
