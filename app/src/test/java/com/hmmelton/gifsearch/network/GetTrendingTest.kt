@@ -1,7 +1,9 @@
 package com.hmmelton.gifsearch.network
 
 import com.squareup.moshi.JsonAdapter
-import junit.framework.Assert.*
+import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertNotNull
+import junit.framework.Assert.assertNull
 import org.junit.Test
 
 /**
