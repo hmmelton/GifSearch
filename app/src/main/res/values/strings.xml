@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">GifSearch</string>
-    <string name="action_settings">Settings</string>
+    <string name="trending_title">Trending GIFs</string>
 </resources>
