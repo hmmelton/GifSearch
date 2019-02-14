@@ -3,14 +3,12 @@ package com.hmmelton.gifsearch.data
 import android.arch.paging.PositionalDataSource
 import com.hmmelton.gifsearch.models.Gif
 import com.hmmelton.gifsearch.network.GifResponse
-import com.hmmelton.gifsearch.network.GifServiceFactory
+import com.hmmelton.gifsearch.network.GifService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GifPositionalDataSource(private val type: Type) : PositionalDataSource<Gif>() {
-
-    private val gifService = GifServiceFactory.create()
+class GifPositionalDataSource(private val type: Type, private val gifService: GifService) : PositionalDataSource<Gif>() {
 
     override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<Gif>) {
         val networkCallback = getNetworkCallback { gifList -> callback.onResult(gifList) }

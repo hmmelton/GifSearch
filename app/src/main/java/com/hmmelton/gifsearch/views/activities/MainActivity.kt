@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
         setUpRecyclerView()
+        setUpSwipeRefreshLayout()
     }
 
     private fun setUpRecyclerView() {
@@ -53,5 +54,13 @@ class MainActivity : AppCompatActivity() {
         trendingRecyclerView.layoutManager = layoutManager
         trendingRecyclerView.addItemDecoration(GridItemDecoration(space = spaceInPixels))
         trendingRecyclerView.adapter = gifAdapter
+    }
+
+    private fun setUpSwipeRefreshLayout() {
+        trendingSwipeRefresh.setOnRefreshListener {
+
+            // On swipe, refresh the view model's data
+            viewModel.refreshData { trendingSwipeRefresh.isRefreshing = false }
+        }
     }
 }
