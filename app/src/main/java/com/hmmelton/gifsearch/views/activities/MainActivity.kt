@@ -105,6 +105,9 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    /**
+     * Set up the back button used to return to trending GIFs.
+     */
     private fun setUpBackButton() {
         searchBackButton.setOnClickListener {
             searchView.setQuery("", false) // Clear query field
@@ -113,6 +116,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Set the collection's data source to display trending GIFs
+     */
     private fun observeTrendingGifs() {
         toolbar.title = getString(R.string.trending_gifs)
         viewModel.setTrendingData()
@@ -122,6 +128,11 @@ class MainActivity : AppCompatActivity() {
         viewModel.data.observe(this@MainActivity, dataObserver)
     }
 
+    /**
+     * Set the collection's data source to display GIFs related to a specific query.
+     *
+     * @param searchQuery query for which to display GIFs
+     */
     private fun observeSearchedGifs(searchQuery: String) {
         toolbar.title = searchQuery
         viewModel.setSearchData(searchQuery = searchQuery)
