@@ -1,6 +1,5 @@
 package com.hmmelton.gifsearch.network
 
-import com.squareup.moshi.JsonAdapter
 import junit.framework.Assert
 import org.junit.Test
 
@@ -10,17 +9,9 @@ import org.junit.Test
  */
 class SearchGifsTest : NetworkTest() {
 
-    private lateinit var gifResponseAdapter: JsonAdapter<GifResponse>
-
-    override fun setUp() {
-        super.setUp()
-
-        gifResponseAdapter = testHelper.moshi.adapter(GifResponse::class.java)
-    }
-
     @Test
     fun searchGifs_none_success200() {
-        givenResponse(code = 200, responseBody = testHelper.sampleResponse)
+        givenResponse(code = 200, responseBody = testHelper.sampleResponseJson)
 
         val response = whenGetTrending()
 
@@ -72,7 +63,7 @@ class SearchGifsTest : NetworkTest() {
 
     private fun thenBodyParsedCorrectly(responseBody: GifResponse?) {
         Assert.assertNotNull(responseBody)
-        Assert.assertEquals(gifResponseAdapter.fromJson(testHelper.sampleResponse), responseBody)
+        Assert.assertEquals(testHelper.sampleResponse, responseBody)
     }
 
     private fun thenBodyIsNull(responseBody: GifResponse?) {

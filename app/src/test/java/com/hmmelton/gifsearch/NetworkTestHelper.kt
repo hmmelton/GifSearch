@@ -1,5 +1,9 @@
 package com.hmmelton.gifsearch
 
+import com.hmmelton.gifsearch.models.FixedWidthImage
+import com.hmmelton.gifsearch.models.Gif
+import com.hmmelton.gifsearch.models.GifImage
+import com.hmmelton.gifsearch.network.GifResponse
 import com.hmmelton.gifsearch.network.GifService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -431,21 +435,36 @@ class NetworkTestHelper {
         }
     ]""".trimIndent()
 
-    private val pagination = """{
+    private val paginationJson = """{
         "total_count": 2,
         "count": 1,
         "offset": 0
     }""".trimMargin()
 
-    private val meta = """{
+    private val metaJson = """{
         "status": 200,
         "msg": "OK",
         "response_id": "123abc456def"
     }""".trimMargin()
 
-    val sampleResponse = """{
+    val sampleResponseJson = """{
         "data": $gifArray,
-        "pagination": $pagination,
-        "meta": $meta
+        "pagination": $paginationJson,
+        "meta": $metaJson
     }""".trimMargin()
+
+    val sampleResponse = GifResponse(
+        gifs = listOf(
+            Gif(
+                id = "sRFym5lssgcTFrMSac",
+                gifImage = GifImage(fixedWidthImage = FixedWidthImage(url = "https://media0.giphy.com/media/sRFym5lssgcTFrMSac/200w.gif")),
+                gifUrl = "https://media0.giphy.com/media/sRFym5lssgcTFrMSac/200w.gif"
+            ),
+            Gif(
+                id = "7IYE22rKh7dnt4QNBV",
+                gifImage = GifImage(fixedWidthImage = FixedWidthImage(url = "https://media0.giphy.com/media/7IYE22rKh7dnt4QNBV/200w.gif")),
+                gifUrl = "https://media0.giphy.com/media/7IYE22rKh7dnt4QNBV/200w.gif"
+            )
+        )
+    )
 }

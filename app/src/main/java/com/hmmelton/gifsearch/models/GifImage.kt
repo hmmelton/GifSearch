@@ -9,4 +9,4 @@ data class GifImage(
     @Json(name = "fixed_width") val fixedWidthImage: FixedWidthImage
 )
 
-data class FixedWidthImage(val url: String, val mp4_size: String)
+data class FixedWidthImage(val url: String)
